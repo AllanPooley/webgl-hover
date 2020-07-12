@@ -1,17 +1,43 @@
-import React, {useRef, useMemo} from 'react'
+import React, {useRef, useMemo, useEffect} from 'react'
 import {DoubleSide} from 'three'
+import {useFrame} from 'react-three-fiber'
+import {ShaderMaterial} from 'three'
 
-import vertex from '~shaders/plane.vert'
-import fragment from '~shaders/plane.frag'
+import {useAssets, useTexture} from '~js/hooks'
+
+// import vertex from '~shaders/plane.vert'
+// import fragment from '~shaders/plane.frag'
 
 export default () => {
   const mesh = useRef()
+  const img = useAssets('images/1.jpg')
+  const imgTexture = useTexture(img)
 
-  const uniforms = useMemo(() => {
-    return {
-      uTime: {value: 0},
-    }
+  const uniforms = useMemo(() => ({
+    uTime: {value: 0},
+    uTexture: {value: imgTexture},
+  }), [imgTexture])
+
+  const material = useMemo(() => {
+    const mat = new ShaderMaterial({
+      uniforms: uniforms,
+      // vertexShader: vertex,
+      // fragmentShader: fragment,
+      side: DoubleSide,
+    })
+
+    return mat
   }, [])
+
+  useEffect( () => {
+    if (material) {
+      material.uniforms.uTexture.value = imgTexture
+    }
+  }, [imgTexture])
+
+  useFrame(()=> {
+    material.uniforms.uTime.value += 0.01
+  })
 
   return (
     <>
@@ -20,16 +46,10 @@ export default () => {
       >
         <planeBufferGeometry
           attach="geometry"
-          args={[0.4, 0.6, 16, 16]}
+          args={[0.512, 0.512, 16, 16]}
         />
-        <shaderMaterial
-          args={[{
-            uniforms: uniforms,
-            vertexShader: vertex,
-            fragmentShader: fragment,
-          }]}
-          wireframe
-          side={DoubleSide}
+        <primitive
+          object={material}
           attach="material"
         />
       </mesh>
