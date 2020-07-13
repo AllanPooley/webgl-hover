@@ -2,10 +2,10 @@ import React from 'react'
 
 import Plane from './Plane'
 
-export default () => {
+export default ({mouse}) => {
   return (
     <>
-      <Plane />
+      <Plane mouse={mouse} />
     </>
   )
 }

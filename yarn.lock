@@ -4835,6 +4835,11 @@ postcss@^7.0.14, postcss@^7.0.16, postcss@^7.0.32, postcss@^7.0.5, postcss@^7.0.
     source-map "^0.6.1"
     supports-color "^6.1.0"
 
+postprocessing@^6.16.0:
+  version "6.16.0"
+  resolved "https://registry.yarnpkg.com/postprocessing/-/postprocessing-6.16.0.tgz#9028c3db08805193d8dc9a5d765122d40976edbb"
+  integrity sha512-hw79kzQjSiQhYlHTyRECJMotQ1yRhkzw9tHprxSJF0z/qMx5e9TS4jpAAQOfSbnIr+0vqQG2K0HO23JA/9t3hw==
+
 prelude-ls@~1.1.2:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/prelude-ls/-/prelude-ls-1.1.2.tgz#21932a549f5e52ffd9a827f570e04be62a97da54"
@@ -5028,6 +5033,13 @@ react-merge-refs@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/react-merge-refs/-/react-merge-refs-1.0.0.tgz#d6b297b9a62a266460a3c0d8b9d920731d8bbe63"
   integrity sha512-VkvWuCR5VoTjb+VYUcOjkFo66HDv1Hw8VjKcwQtWr2lJnT8g7epRRyfz8+Zkl2WhwqNeqR0gIe0XYrBa9ePeXg==
+
+react-postprocessing@^1.0.0-beta31:
+  version "1.0.0-beta31"
+  resolved "https://registry.yarnpkg.com/react-postprocessing/-/react-postprocessing-1.0.0-beta31.tgz#b61270386a1d520fde22f81575ce99327ff23d2d"
+  integrity sha512-a5sb1UJheWAZC0q1E99jktxjcmHwAEbq3G57GKZfZ5x9wL7DoKCm62QaE+HlpXtEGM1rcxl6IV6Oq5Hpb2Kqcg==
+  dependencies:
+    react-merge-refs "^1.0.0"
 
 react-promise-suspense@^0.3.2:
   version "0.3.3"

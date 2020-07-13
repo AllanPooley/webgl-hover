@@ -4,28 +4,33 @@ import '~css/main.css'
 import 'core-js/stable'
 import 'regenerator-runtime/runtime'
 
-import React, {useEffect} from 'react'
+import React, {useRef, useCallback, Suspense} from 'react'
 import {render} from 'react-dom'
-
-import gui from '~js/helpers/gui'
 
 import Canvas from '~js/components/Canvas'
 import Camera from '~js/components/Canvas/Camera'
+import Effects from '~js/components/Canvas/Effects'
 import Environment from '~js/components/Canvas/Environment'
 
 /**
  * app
  */
 const App = () => {
-  useEffect(() => {
-    gui.init()
-  }, [])
+  const mouse = useRef([0, 0])
+  const onMouseMove = useCallback(
+    ({clientX: x, clientY: y}) => ( mouse.current = [
+      x - window.innerWidth / 2,
+      y - window.innerHeight / 2
+    ]), [])
 
   return (
     <>
-      <Canvas>
+      <Canvas onMouseMove={onMouseMove}>
         <Camera />
-        <Environment />
+        <Environment mouse={mouse} />
+        <Suspense>
+          <Effects />
+        </Suspense>
       </Canvas>
     </>
   )
