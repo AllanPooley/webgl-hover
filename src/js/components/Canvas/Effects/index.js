@@ -14,8 +14,6 @@ export default function Effects({ mouse }) {
   const composer = useRef()
   const {scene, gl, size, camera} = useThree()
 
-  console.log({ mouse })
-
   const uniforms = useMemo(() => ({
     'tDiffuse': { value: null },
     'resolution': { value: new THREE.Vector2(1., window.innerHeight / window.innerWidth) },
@@ -37,17 +35,13 @@ export default function Effects({ mouse }) {
     size,
   ])
 
-  useEffect( () => {
-    console.log({ mouse })
-    const mouseX = mouse.current.x || 0
-    const mouseY = mouse.current.y || 0
+  useFrame(() => {
+    const mouseX = mouse.current[0]
+    const mouseY = mouse.current[1]
     material.uniforms.uMouse.value.x = mouseX
     material.uniforms.uMouse.value.y = mouseY
-  }, [mouse])
-
-  useFrame(() => {
     composer.current.render()
-  })
+  }, 1)
 
   return (
     <effectComposer
@@ -62,7 +56,7 @@ export default function Effects({ mouse }) {
       <shaderPass
         attachArray="passes"
         args={[material]}
-        material-uniforms-resolution-value={[1 / size.width, 1 / size.height]}
+        material-uniforms-resolution-value={[0.01 / size.width, 0.01 / size.height]}
         renderToScreen
       />
     </effectComposer>
