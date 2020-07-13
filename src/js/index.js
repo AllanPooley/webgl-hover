@@ -10,7 +10,7 @@ import {render} from 'react-dom'
 import Canvas from '~js/components/Canvas'
 import Camera from '~js/components/Canvas/Camera'
 import Effects from '~js/components/Canvas/Effects'
-import Environment from '~js/components/Canvas/Environment'
+import Plane from '~js/components/Canvas/Plane'
 
 /**
  * app
@@ -21,7 +21,7 @@ const App = () => {
   return (
     <Canvas onMouseMove={onMouseMove}>
       <Camera />
-      <Environment mouse={mouse} />
+      <Plane />
       <Suspense>
         <Effects mouse={mouse} />
       </Suspense>

@@ -43,6 +43,10 @@ export default function Effects({ mouse }) {
     composer.current.render()
   }, 1)
 
+  // effectComposer args?
+  // Renderer size?
+  // useFrame params?
+
   return (
     <effectComposer
       ref={composer}
@@ -56,8 +60,8 @@ export default function Effects({ mouse }) {
       <shaderPass
         attachArray="passes"
         args={[material]}
-        material-uniforms-resolution-value={[0.01 / size.width, 0.01 / size.height]}
         renderToScreen
+        material-uniforms-resolution-value={[1 / size.width, 1 / size.height]}
       />
     </effectComposer>
   )

@@ -7,6 +7,7 @@ export default ({children, onMouseMove}) => {
       <Canvas
         camera={{position: [0, 1, 3]}}
         onMouseMove={(event) => onMouseMove(event)}
+        gl={{ antialias: true }}
       >
         {children}
       </Canvas>
