@@ -17,22 +17,16 @@ import Environment from '~js/components/Canvas/Environment'
  */
 const App = () => {
   const mouse = useRef([0, 0])
-  const onMouseMove = useCallback(
-    ({clientX: x, clientY: y}) => ( mouse.current = [
-      x - window.innerWidth / 2,
-      y - window.innerHeight / 2
-    ]), [])
-
+  const onMouseMove = useCallback(({ clientX: x, clientY: y }) => (mouse.current = [x - window.innerWidth / 2, y - window.innerHeight / 2]), [])
+  console.log({ mouse })
   return (
-    <>
-      <Canvas onMouseMove={onMouseMove}>
-        <Camera />
-        <Environment mouse={mouse} />
-        <Suspense>
-          <Effects />
-        </Suspense>
-      </Canvas>
-    </>
+    <Canvas onMouseMove={onMouseMove}>
+      <Camera />
+      <Environment mouse={mouse} />
+      <Suspense>
+        <Effects mouse={mouse} />
+      </Suspense>
+    </Canvas>
   )
 }
 

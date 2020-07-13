@@ -1,11 +1,12 @@
 import React from 'react'
 import {Canvas} from 'react-three-fiber'
 
-export default ({children}) => {
+export default ({children, onMouseMove}) => {
   return (
     <div className="root">
       <Canvas
         camera={{position: [0, 1, 3]}}
+        onMouseMove={(event) => onMouseMove(event)}
       >
         {children}
       </Canvas>

@@ -22,6 +22,8 @@ module.exports = {
     "require-jsdoc": 0,
     "no-unused-vars": 1,
     "new-cap": 0,
+    "object-curly-spacing": 0,
+    "max-len": 0,
     "prefer-template": 2,
     semi: ["error", "never"],
     "react/jsx-uses-react": "error",

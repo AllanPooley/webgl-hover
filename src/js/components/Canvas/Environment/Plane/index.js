@@ -10,7 +10,7 @@ import fragment from '~shaders/plane.frag'
 
 export default ({mouse}) => {
   const mesh = useRef()
-  const img = useAssets('images/2.jpg')
+  const img = useAssets('images/1.jpg')
   const imgTexture = useTexture(img)
 
   const uniforms = useMemo(() => ({
@@ -57,7 +57,7 @@ export default ({mouse}) => {
       >
         <planeBufferGeometry
           attach="geometry"
-          args={[0.8, 0.45, 16, 16]}
+          args={[0.512, 1.024, 16, 16]}
         />
         <primitive
           object={material}
