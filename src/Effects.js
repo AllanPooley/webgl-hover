@@ -1,4 +1,3 @@
-import * as THREE from 'three';
 import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer';
 import { ShaderPass } from 'three/examples/jsm/postprocessing/ShaderPass';
 import { RenderPass } from 'three/examples/jsm/postprocessing/RenderPass';
@@ -8,16 +7,18 @@ import './shaders/RGBShift';
 
 extend({ EffectComposer, ShaderPass, RenderPass });
 
-export default function Effects() {
+const Effects = ({ mouse }) => {
   const composer = useRef();
   const shift = useRef();
   const {
     scene, gl, size, camera,
   } = useThree();
   useEffect(() => composer.current.setSize(size.width, size.height), [size]);
-  useFrame((state) => {
-    shift.current.mouse.x = THREE.MathUtils.lerp(shift.current.mouse.x, state.mouse.x * 100, 0.1);
-    shift.current.mouse.y = THREE.MathUtils.lerp(shift.current.mouse.y, state.mouse.y * 100, 0.1);
+  useFrame(() => {
+    const mouseX = mouse.current[0] || 0;
+    const mouseY = mouse.current[1] || 0;
+    shift.current.mouse.x = mouseX;
+    shift.current.mouse.y = mouseY;
     composer.current.render();
   }, 1);
   return (
@@ -31,4 +32,6 @@ export default function Effects() {
       />
     </effectComposer>
   );
-}
+};
+
+export default Effects;

@@ -7,7 +7,7 @@ class RGBShift extends ShaderPass {
     super({
       uniforms: {
         tDiffuse: { value: null },
-        resolution: { value: new THREE.Vector2(1, 1) },
+        resolution: { value: new THREE.Vector2(1, window.innerHeight / window.innerWidth) },
         uMouse: { value: new THREE.Vector2(-10, -10) },
         uVelo: { value: 0 },
       },
