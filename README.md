@@ -1,1 +1,0 @@
-# WebGL Hover Demo
