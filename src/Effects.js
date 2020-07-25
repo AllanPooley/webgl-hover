@@ -28,7 +28,7 @@ const Effects = ({ mouse }) => {
         ref={shift}
         attachArray="passes"
         renderToScreen
-        material-uniforms-resolution-value={[1 / size.width, 1 / size.height]}
+        // material-uniforms-resolution-value={[1 / size.width, 1 / size.height]}
       />
     </effectComposer>
   );

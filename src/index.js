@@ -11,7 +11,7 @@ const Image = () => {
   const texture = useLoader(THREE.TextureLoader, image);
   return (
     <mesh>
-      <planeBufferGeometry attach="geometry" args={[1, 1, 32, 32]} />
+      <planeBufferGeometry attach="geometry" args={[1, 1]} />
       <meshBasicMaterial attach="material" map={texture} />
     </mesh>
   );
@@ -19,7 +19,7 @@ const Image = () => {
 
 const Scene = () => {
   const mouse = useRef([0, 0]);
-  const onMouseMove = useCallback(({ clientX: x, clientY: y }) => (mouse.current = [x - window.innerWidth / 2, y - window.innerHeight / 2]), []);
+  const onMouseMove = useCallback(({ clientX: x, clientY: y }) => (mouse.current = [x / window.innerWidth, 1.0 - (y / window.innerHeight)]), []);
   return (
     <Canvas onMouseMove={onMouseMove} camera={{ position: [0, 0, 1.5] }}>
       <Suspense fallback={null}>
