@@ -2,7 +2,7 @@ import * as THREE from 'three';
 import ReactDOM from 'react-dom';
 import React, { Suspense, useCallback, useRef } from 'react';
 import { Canvas, useLoader } from 'react-three-fiber';
-import image from './img/allan.jpg';
+import image from './img/android.jpg';
 import Effects from './Effects';
 import './shaders/RGBShift';
 import './styles.css';
@@ -11,7 +11,7 @@ const Image = () => {
   const texture = useLoader(THREE.TextureLoader, image);
   return (
     <mesh>
-      <planeBufferGeometry attach="geometry" args={[1, 1]} />
+      <planeBufferGeometry attach="geometry" args={[0.95, 1.28]} />
       <meshBasicMaterial attach="material" map={texture} />
     </mesh>
   );
